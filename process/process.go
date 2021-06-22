@@ -390,7 +390,7 @@ func (p *Process) getExitCodes() []int {
 // check if the process is running or not
 //
 func (p *Process) isRunning() bool {
-	if p.cmd != nil && p.cmd.Process != nil {
+	if p.cmd != nil && p.cmd.Process != nil && p.cmd.ProcessState == nil{
 		if runtime.GOOS == "windows" {
 			proc, err := os.FindProcess(p.cmd.Process.Pid)
 			return proc != nil && err == nil
